@@ -7,7 +7,7 @@
 # 2019/11/26  MR - dockerizzazione 
 ###############################################################################
 
-DIRDATA=./
+DIRDATA=data
 SUBS="---> QUIT"
 FTP_LOG=ftp_rem2.log
 ERRE=/usr/bin/Rscript
