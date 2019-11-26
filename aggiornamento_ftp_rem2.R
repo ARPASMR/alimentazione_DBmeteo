@@ -90,7 +90,7 @@ if (inherits(q_anagrafica,"try-error")) {
 #___________________________________________________
 #   PROCESSO FILE NUOVI DALLA DIRECTORY CSV_FTP 
 #___________________________________________________
-comando <- paste("ls *.csv",sep="")
+comando <- paste("ls data/*.csv",sep="")
 nomefile <- try(readLines(pipe(comando)),silent=TRUE)
 if (inherits(nomefile,"try-error")) {
   cat(nomefile,"\n",file=file_log,append=T)
