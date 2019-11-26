@@ -41,7 +41,7 @@ quote pass $FTP_PWD
 cd $FTP_DIR
 prompt
 mget SMR_REM2*.csv
-mdelete SMR_REM2*.csv
+## mdelete SMR_REM2*.csv
 bye
 FINE1
 FLAG=0
