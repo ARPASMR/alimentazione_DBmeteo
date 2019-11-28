@@ -11,17 +11,17 @@ DIRDATA=data
 FTP=/usr/bin/ftp
 SUBS="---> QUIT"
 FTP_LOG=ftp_rem2.log
-ERRE=/usr/bin/Rscript
+ERRE=/usr/bin/R
 AGGIORNAMENTO_FTP=aggiornamento_ftp_rem2.R
-AGGIORNAMENTO_FTP_LOG=aggiornamento_ftp_rem2.log
+#AGGIORNAMENTO_FTP_LOG=aggiornamento_ftp_rem2.log
 nomescript=${0##*/}
 # modifica per evitare esagerati accessi al dB
-nomescript=${0##*/}
-if pidof -o %PPID -x $nomescript >/dev/null; then
-    echo "Process already running"
-    logger -is -p user.warning "$nomescript: processo attivo -> esco" -t "PREVISORE"
-    exit 1
-fi
+#nomescript=${0##*/}
+#if pidof -o %PPID -x $nomescript >/dev/null; then
+#    echo "Process already running"
+#    logger -is -p user.warning "$nomescript: processo attivo -> esco" -t "PREVISORE"
+#    exit 1
+#fi
 # Info di Log
 echo "#~### getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" ###~#"
 echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > scarico files .csv dall'ftp server di ARPA Lombardia"
@@ -57,7 +57,7 @@ FLAG=0
 if [ "$FLAG" -ne 1 ]
 then
   echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > ERRORE di connessione con ftp-server!"
-  logger -is -p user.err "$nomescript "`date  '+%Y/%m/%d %H:%M:%S'`" > ERRORE di connessione con ftp-server!" -t "PREVISORE"
+ # logger -is -p user.err "$nomescript "`date  '+%Y/%m/%d %H:%M:%S'`" > ERRORE di connessione con ftp-server!" -t "PREVISORE"
   echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > Ulteriori dettagli dal file di log di ftp:"
   echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > INIZIO: "
 { while read RIGA
@@ -77,22 +77,23 @@ echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > numero di files p
 # Aggiornamento archivio MySQL
 if [ "$NUM1" -gt 0 ]
 then
-  logger -is -p user.info "$nomescript: presenti  su sinergico $NUM1 file(s) e scaricati $NUM2 file(s)"
+ # logger -is -p user.info "$nomescript: presenti  su sinergico $NUM1 file(s) e scaricati $NUM2 file(s)"
   echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > Avvio applicativo R che aggiorna l'archivio MySQL"
   echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > vvvvvvvvv~vvvvv~vvvvvvv~vvvvvv~~vvvv~~v~vvvvvvvvv"
   $ERRE --vanilla $AGGIORNAMENTO_FTP
 #  $ERRE --no-save --no-restore < $AGGIORNAMENTO_FTP
   if [ "$?" -ne 0 ]
   then
-   logger -is -p user.err "$nomescript "`date  '+%Y/%m/%d %H:%M:%S'`" > ERRORE nell'esecuzione dell'istruzione :"$AGGIORNAMENTO_FTP
+  # logger -is -p user.err "$nomescript "`date  '+%Y/%m/%d %H:%M:%S'`" > ERRORE nell'esecuzione dell'istruzione :"$AGGIORNAMENTO_FTP
     echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > ERRORE nell'esecuzione dell'istruzione :"
     echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > "$ERRE" --save --no-restore < "$AGGIORNAMENTO_FTP
   fi
-  cat $AGGIORNAMENTO_FTP_LOG
+  #cat $AGGIORNAMENTO_FTP_LOG
     echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > ^^^^~^^^^^^^^^^^^^^^^^^^^^~^^^^^^^^^^^^^^^^^^^^~^"
-    logger -is -p user.notice "$nomescript: esecuzione terminata con successo per $NUM2 file(s)" -t "DATI"
+  #  logger -is -p user.notice "$nomescript: esecuzione terminata con successo per $NUM2 file(s)" -t "DATI"
 else
-  logger -is -p user.warning "$nomescript: nessun file presente in ftp REM" -t "PREVISORE"
+ # logger -is -p user.warning "$nomescript: nessun file presente in ftp REM" -t "PREVISORE"
+ echo "nessun file presente in ftp REM"
 fi
 # Fine con successo
 exit 0
