@@ -8,6 +8,7 @@
 ###############################################################################
 
 DIRDATA=data
+FTP=/usr/bin/ftp
 SUBS="---> QUIT"
 FTP_LOG=ftp_rem2.log
 ERRE=/usr/bin/Rscript
