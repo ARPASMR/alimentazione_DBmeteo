@@ -34,7 +34,7 @@ NUM=0
 cd $DIRDATA
 # Scarica i dati e salvali sul PC locale
 rm -f $FTP_LOG
-NUM=`ls -1  $DIRDATA/SMR_REM2*.csv | wc -l`
+NUM=`ls -1 SMR_REM2*.csv | wc -l`
 $FTP -n -v -d <<FINE1 > $FTP_LOG
 open $FTP_SERV
 quote user $FTP_USR
@@ -42,7 +42,7 @@ quote pass $FTP_PWD
 cd $FTP_DIR
 prompt
 mget SMR_REM2*.csv
-## mdelete SMR_REM2*.csv
+mdelete SMR_REM2*.csv
 bye
 FINE1
 FLAG=0
@@ -69,7 +69,7 @@ then
   exit 1
 fi
 #
-NUM1=`ls -1  $DIRDATA/SMR_REM2*.csv | wc -l`
+NUM1=`ls -1 SMR_REM2*.csv | wc -l`
 NUM2=$(( NUM1-NUM ))
 echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > numero di files scaricati dall'FTP server = "$NUM2
 echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > numero di files presenti nella directory  = "$NUM1
@@ -80,7 +80,7 @@ then
  # logger -is -p user.info "$nomescript: presenti  su sinergico $NUM1 file(s) e scaricati $NUM2 file(s)"
   echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > Avvio applicativo R che aggiorna l'archivio MySQL"
   echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > vvvvvvvvv~vvvvv~vvvvvvv~vvvvvv~~vvvv~~v~vvvvvvvvv"
-  $ERRE --vanilla $AGGIORNAMENTO_FTP
+  $ERRE --vanilla < ../$AGGIORNAMENTO_FTP
 #  $ERRE --no-save --no-restore < $AGGIORNAMENTO_FTP
   if [ "$?" -ne 0 ]
   then
