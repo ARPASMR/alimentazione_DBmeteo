@@ -10,8 +10,8 @@ while [ 1 ]
 do
   if [ $SECONDS -ge $numsec ]
   then
-    ./getcsv_from_ftp_rem2.sh
     SECONDS=0
+    ./getcsv_from_ftp_rem2.sh
     sleep $numsec
   fi
 done
