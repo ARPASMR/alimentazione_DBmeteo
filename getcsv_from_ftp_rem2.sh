@@ -35,26 +35,8 @@ cd $DIRDATA
 # Scarica i dati e salvali sul PC locale
 rm -f $FTP_LOG
 NUM=`ls -1 SMR_REM2*.csv | wc -l`
-$FTP -n -v -d <<FINE1 > $FTP_LOG
-open $FTP_SERV
-quote user $FTP_USR
-quote pass $FTP_PWD
-cd $FTP_DIR
-prompt
-mget SMR_REM2*.csv
-mdelete SMR_REM2*.csv
-bye
-FINE1
-FLAG=0
-{ while read RIGA
-  do
-    if [ "$RIGA" = "$SUBS" ]
-    then
-      FLAG=1
-    fi
-  done
-} < $FTP_LOG
-if [ "$FLAG" -ne 1 ]
+ncftpget -u $FTP_USR -p $FTP_PWD -d $FTP_LOG -t 60 -DD ftp://$FTP_SERV/$FTP_DIR/SMR_REM2*.csv
+if [ "$?" -ne 0 ]
 then
   echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > ERRORE di connessione con ftp-server!"
  # logger -is -p user.err "$nomescript "`date  '+%Y/%m/%d %H:%M:%S'`" > ERRORE di connessione con ftp-server!" -t "PREVISORE"
