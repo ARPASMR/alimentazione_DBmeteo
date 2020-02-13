@@ -1,5 +1,6 @@
 FROM arpasmr/r-base
 COPY . /usr/local/src/myscripts
+# COPY .vimrc / #funziona così?
 WORKDIR /usr/local/src/myscripts
 RUN apt-get install -y ftp ncftp
 RUN chmod a+x launcher.sh
