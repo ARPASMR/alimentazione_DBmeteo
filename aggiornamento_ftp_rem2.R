@@ -63,7 +63,7 @@ cat ( "INSERIMENTO DATI METEO IN TABELLE RECENTI", date()," \n\n" , file = file_
 
 cat("collegamento al DB...",file=file_log,append=T)
 drv<-dbDriver("MySQL")
-conn<-try(dbConnect(drv, user=as.character(Sys.getenv("MYSQL_USR")), password=as.character(Sys.getenv("MYSQL_PWD")), dbname=as.character(Sys.getenv("MYSQL_DBNAME")), host=as.character(Sys.getenv("MYSQL_HOST"))))
+conn<-try(dbConnect(drv, user=as.character(Sys.getenv("MYSQL_USR")), password=as.character(Sys.getenv("MYSQL_PWD")), dbname=as.character(Sys.getenv("MYSQL_DBNAME")), host=as.character(Sys.getenv("MYSQL_HOST")), port=as.numeric(Sys.getenv("MYSQL_PORT")) ))
 
 if (inherits(conn,"try-error")) {
   print( "ERRORE nell'apertura della connessione al DB \n")
