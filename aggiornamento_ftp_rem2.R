@@ -520,7 +520,7 @@ while( i <= length(nomefile) ){
           Data                 <- vector(                  length=length(IDsensore))
           Flag_manuale[]       <- "'M'"
           Flag_automatica[]    <- "'P'"
-          Autore[]             <- "'aggiornamento_ftp'"
+          Autore[]             <- "'aggiorn_ftp'"
           Data[]               <- paste("'",as.character(Sys.time()),"'",sep="") 
 
 # definizione data.frame 
