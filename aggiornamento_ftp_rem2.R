@@ -853,7 +853,7 @@ while( i <= length(nomefile) ){
                                       q_misura$Flag_manuale_DBunico[uu],",",
                                       "'", q_misura$Flag_manuale[uu],"',",
                                       "'",q_misura$Flag_automatica[uu],"',", 
-                                      "'aggiornamento_ftp',",
+                                      "'aggiorn_ftp',",
                                       "'",as.character(Sys.time()),"',NULL)",
                                       sep="")
               } else {
@@ -874,7 +874,7 @@ while( i <= length(nomefile) ){
                                       q_misura$Flag_manuale_DBunico[uu],",",
                                       "'", q_misura$Flag_manuale[uu],"',",
                                       "'",q_misura$Flag_automatica[uu],"',", 
-                                      "'aggiornamento_ftp',",
+                                      "'aggiorn_ftp',",
                                       "'",as.character(Sys.time()),"',NULL)",
                                       sep="")
               }
@@ -1038,7 +1038,7 @@ while( i <= length(nomefile) ){
                                       q_flag$Flag_manuale_DBunico[uu],",",
                                       "'", flag,"',",
                                       "'",q_flag$Flag_automatica[uu],"',", 
-                                      "'aggiornamento_ftp',",
+                                      "'aggiorn_ftp',",
                                       "'",as.character(Sys.time()),"',NULL)",
                                       sep="")
               q_replace<- try(dbGetQuery(conn,query_replace),silent=TRUE)
@@ -1129,7 +1129,7 @@ while( i <= length(nomefile) ){
                                        riga$IDsensore[sopra_max[pp]],
                                        ",", riga$Data_e_ora[sopra_max[pp]],",'",
                                        test,"','",fallimento,
-                                       "','aggiornamento_ftp', ",
+                                       "','aggiorn_ftp', ",
                                        paste("'",as.character(Sys.time()),"',NULL)",sep=""),
                                        sep="")
               query_insert <- paste ("insert into " , nome_tavola_DQC, 
@@ -1154,7 +1154,7 @@ while( i <= length(nomefile) ){
                                        riga$IDsensore[sotto_min[pp]],
                                        ",", riga$Data_e_ora[sotto_min[pp]],",'",
                                        test,"','",fallimento,
-                                       "','aggiornamento_ftp', ",
+                                       "','aggiorn_ftp', ",
                                        paste("'",as.character(Sys.time()),"',NULL)",sep=""),
                                        sep="")
               query_insert <- paste ("insert into " , nome_tavola_DQC,
@@ -1180,7 +1180,7 @@ while( i <= length(nomefile) ){
                                            riga$Data_e_ora[sopra_notte[pp]],",",
                                            "'P1b'",
                                            ",'",fallimento,"',",
-                                           "'aggiornamento_ftp',",
+                                           "'aggiorn_ftp',",
                                            "'",as.character(Sys.time()),"',NULL",
                                        ")", sep="")
               query_insert <- paste ("insert into " , nome_tavola_DQC,
