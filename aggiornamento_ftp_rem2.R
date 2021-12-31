@@ -427,6 +427,7 @@ while( i <= length(nomefile) ){
       nel_2019  <- NULL 
       nel_2020  <- NULL
       nel_2021  <- NULL
+      nel_2022  <- NULL
       nel_1987  <- which(format(tempo[indice],"%Y") == "1987")
       nel_1988  <- which(format(tempo[indice],"%Y") == "1988")
       nel_1989  <- which(format(tempo[indice],"%Y") == "1989")
@@ -462,9 +463,10 @@ while( i <= length(nomefile) ){
       nel_2019  <- which(format(tempo[indice],"%Y") == "2019")
       nel_2020  <- which(format(tempo[indice],"%Y") == "2020")
       nel_2021  <- which(format(tempo[indice],"%Y") == "2021")
+      nel_2022  <- which(format(tempo[indice],"%Y") == "2022")
 ##### @@@@@@@@@@ 
 # CICLO SUGLI ANNI  
-      for (anno in seq(1987,2021, by=1)) {
+      for (anno in seq(1987,2022, by=1)) {
 ##### @@@@@@@@@@ !!!!!!!!
         index <- NULL
         index <- indice[eval(parse(text=paste("nel_",anno,sep="")))]
