@@ -35,7 +35,7 @@ cd $DIRDATA
 # Scarica i dati e salvali sul PC locale
 rm -f $FTP_LOG
 NUM=`ls -1 SMR_REM2*.csv | wc -l`
-ncftpget -u $FTP_USR -p $FTP_PWD -d $FTP_LOG -t 60 -DD ftp://$FTP_SERV/$FTP_DIR/SMR_REM2*.csv
+ncftpget -u $FTP_USR -p $FTP_PWD -d $FTP_LOG -t 60 ftp://$FTP_SERV/$FTP_DIR/SMR_REM2*.csv
 if [ "$?" -ne 0 ]
 then
   echo "getcsv_from_ftp_rem2.sh "`date  '+%Y/%m/%d %H:%M:%S'`" > ERRORE di connessione con ftp-server!"
